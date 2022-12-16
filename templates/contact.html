@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email</title>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+  <style>
+    .button {
+      background-color: #00b8d4;
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom:10px;
+    }
+
+    .btn {
+      margin-left: 80%;
+    }
+    .container{
+    padding:40px;
+
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    margin: 0 auto;
+
+    }
+    .letter-header{
+border-radius:10px;
+padding:30px;
+    border: 3px solid #000;
+    width: 50%;
+    height:500px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<form action="/contact" method="POST" enctype="multipart/form-data">
+     {% csrf_token %}
+<div class="container">
+
+    <div class="letter-header">
+      <div class="sender-info">
+        <p>Software Company</p>
+        <p>123 Main Street</p>
+        <p>San Francisco, CA 94102</p>
+      </div>
+      <div class="date">
+        <p>Date: January 1, 2021</p>
+      </div>
+
+    <div class="letter-body">
+      <p>Dear [Candidate],</p>
+      <p>
+        We are pleased to offer you the position of [Position] at Software Company. We were impressed by your
+        [skills/experience] and believe you would be a valuable addition to our team.
+      </p>
+      <p>
+        The position will be full-time and will be based at our San Francisco office. Your starting salary will be
+        [salary] per year, with [benefits/perks].
+      </p>
+      <p>
+        We hope you will accept this offer and join our team. Please let us know if you have any questions or need any
+        additional information.
+      </p>
+    </div>
+    <div class="letter-closing">
+      <p>Sincerely,</p>
+      <p>Vulcaints</p>
+      <div class="signature">
+        [Your Signature]
+      </div>
+    </div>
+    <div class="btn">
+    <button Type="submit" class="button" name="send" >Send Email</button>
+       <button Type="submit" class="button"  name="back">Main Page</button>
+  </div>
+  </div>
+
+</div>
+</form>
+
+
+
+
+</body>
+
+</html>

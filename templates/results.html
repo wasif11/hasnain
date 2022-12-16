@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Candidates</title>
+
+  <style>
+     body {
+  font-family: Arial, sans-serif;
+  background-color: #1ad5c9;
+}
+h1 {
+
+    text-align: center;
+    color: black;
+    /* margin-bottom: 20px; */
+    padding: 30px 20px 20px 20px;
+;
+}
+/* .header{
+
+} */
+
+.profile-list {
+  width: 800px;
+  margin: 20px auto;
+  /* background-color: white; */
+  background-color: #E9FBFA;
+  /* background-color: rgba(255,255,255,0.9); */
+  border: 2px solid #faf4f4;;
+  border-radius: 20px;
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.profile:last-child {
+  border-bottom: none;
+}
+
+.profile-pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.profile-name {
+  font-size: 18px;
+  color: #333333;
+}
+
+.profile-role {
+  font-size: 16px;
+  color: #828282;
+  margin-right: 20px;
+}
+
+.profile-location {
+  font-size: 16px;
+  color: #828282;
+  margin-right: 20px;
+}
+
+.profile-desc {
+  font-size: 14px;
+  color: #828282;
+  margin-right: 20px;
+}
+
+.profile-details-btn, .profile-contact-btn {
+    text-decoration: none;
+    padding: 10px 25px;
+    margin-left: 20px;
+    border: 0;
+/*     border-radius: 5px; */
+    background-color: #b3e6e2;
+    color:  black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    float: right;
+}
+
+.go_back{
+  padding: 10px 20px;
+  margin-right: 25px;
+   margin-left: 3%;
+  border: 0;
+  border-radius: 5px;
+  background-color: #b3e6e2;
+  color:  black;
+/*   font-weight: bold; */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+/* Buttn desiging */
+.btns{
+   margin-left:auto;
+}
+
+
+
+
+
+/* body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    } */
+    .button {
+      background-color: #00b8d4;
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+
+    }
+    .card {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 50%;
+      height: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px #aaaaaa;
+    }
+    iframe {
+      width: 95%;
+      height: 90%;
+    }
+  </style>
+</head>
+
+<body>
+
+
+<form action= '/contact', schoolDetails) method="POST" enctype="multipart/form-data">
+     {% csrf_token %}
+  <div class="profile-list">
+    <div class="header">
+      <h1>Selected Profiles List</h1>
+
+    </div>
+    <hr>
+
+   {% if d %}
+
+    {% for i in d %}
+    <div class="profile">
+
+      <img class="profile-pic" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_06.jpg"
+        alt="Profile Picture">
+      <div>
+          {% if i.name is not null %}
+          <div class="profile-location">
+          {{i.name}}.</div>
+            {% endif %}
+          {% if i.name is null%}
+             <div class="profile-name">John Doe</div>
+         {% endif %}
+
+        <div class="profile-role">{{i.position}}</div>
+        <div class="profile-location">New York, USA</div>
+        <div class="profile-location">{{i.experience}}</div>
+          {% if i.location is not null %}
+          <div class="profile-location">
+          {{i.location}}.</div>
+            {% endif %}
+
+        <div class="profile-location">
+          {{i.technologies}}.</div>
+          <div class="profile-location">
+          {{i.databases}}</div>
+      </div>
+      <div class="btns">
+<!--        <button class="button" onclick="openCard()">More Details</button>-->
+        <button type="submit" class="button">Email</button>
+
+<!--        <div id="card2" class="card">-->
+<!--          <iframe src="details.html"></iframe>-->
+<!--          <button class="button" onclick="closeCard()">Close Card</button>-->
+<!--        </div>-->
+<!--        <div id="contact2" class="card">-->
+<!--          <iframe src="contact.html"></iframe>-->
+<!--          <button class="button" onclick="closeContact()">Close Card</button>-->
+<!--        </div>-->
+      </div>
+    </div>
+     {% endfor %}
+      {% endif %}
+
+
+
+
+
+
+
+  </div>
+</form>
+
+  <script>
+    function openCard() {
+      document.getElementById("card").style.display = "block";
+    }
+    function closeCard() {
+      document.getElementById("card").style.display = "none";
+    }
+    function openContact() {
+      document.getElementById("contact").style.display = "block";
+    }
+    function closeContact() {
+      document.getElementById("contact").style.display = "none";
+    }
+
+    function goToPage() {
+      window.location.href = "/index.html";
+    }
+
+  </script>
+
+
+
+
+</body>
+
+</html>
